@@ -25,7 +25,7 @@ def filter_df(df, bb=nyc_bb):
 
 class Haversiner(TransformerMixin):
 
-    def fit(self):
+    def fit(self, df):
         return self
 
     def transform(self, df):
@@ -35,7 +35,7 @@ class Haversiner(TransformerMixin):
 
 class RemoveBadData(TransformerMixin):
 
-    def fit(self):
+    def fit(self, df):
         return self
 
     def transform(self, df):
@@ -44,7 +44,7 @@ class RemoveBadData(TransformerMixin):
 
 class AbsDiff(TransformerMixin):
 
-    def fit(self):
+    def fit(self, df):
         return self
 
     def transform(self, df):
@@ -56,7 +56,7 @@ class AbsDiff(TransformerMixin):
 
 class AddDateTime(TransformerMixin):
 
-    def fit(self):
+    def fit(self, df):
         return self
 
     def transform(self, df):
@@ -100,7 +100,7 @@ class ColumnExtractor(TransformerMixin):
     def __init__(self, cols):
         self.cols = cols
 
-    def fit(self):
+    def fit(self, df):
         return self
 
     def transform(self, X):
