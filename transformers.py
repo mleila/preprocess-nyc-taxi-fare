@@ -13,7 +13,7 @@ nyc_bb = [-74.2589, 40.4774, -73.7004, 40.9176]
 def filter_df(df, bb=nyc_bb):
     lon1, lat1, lon2, lat2 = bb
     df = df[
-        (df['passenger_count'] > 1)
+        (df['passenger_count'] > 1) &\
         (df['Manhatten'] != 0) &\
         (df['fare_amount'] > 2.5) & (df['fare_amount'] < 500) &\
         (df['pickup_latitude'] >= lat1) & (df['pickup_latitude'] <= lat2) &\
