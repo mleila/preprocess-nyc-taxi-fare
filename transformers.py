@@ -70,7 +70,7 @@ class AddDateTime(TransformerMixin):
         df = pd.concat([df, pd.get_dummies(df['month'], prefix='month')], axis=1)
         df = pd.concat([df, pd.get_dummies(df['week_day'], prefix='dow')], axis=1)
         df = pd.concat([df, pd.get_dummies(df['month_day'], prefix='dom')], axis=1)
-        df.drop(['hour', 'year', 'month', 'week_day', 'month_day'], axis=1, inplace=True)
+        df.drop(['pickup_datetime', 'hour', 'year', 'month', 'week_day', 'month_day'], axis=1, inplace=True)
         return df
 
 
