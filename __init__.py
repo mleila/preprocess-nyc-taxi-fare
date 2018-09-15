@@ -1,2 +1,2 @@
-from transformers import build_preprocessing_pipeline
+from .transformers import build_preprocessing_pipeline
 
