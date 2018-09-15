@@ -3,7 +3,7 @@ from sklearn.base import TransformerMixin
 from sklearn.pipeline import Pipeline, FeatureUnion
 from sklearn.preprocessing import FunctionTransformer
 
-from distance_functions import haversine, compute_distance
+from .distance_functions import haversine, compute_distance
 
 
 nyc_bb = [-74.2589, 40.4774, -73.7004, 40.9176]
