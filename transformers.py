@@ -93,6 +93,7 @@ class DFStandardScaler(TransformerMixin):
         # assumes X is a DataFrame
         Xss = self.ss.transform(X)
         Xscaled = pd.DataFrame(Xss, index=X.index, columns=X.columns)
+        return X
 
 
 class ColumnExtractor(TransformerMixin):
