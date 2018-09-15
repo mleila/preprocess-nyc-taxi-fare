@@ -30,7 +30,7 @@ class Haversiner(TransformerMixin):
 
     def transform(self, df):
         df['haversine'] = df.apply(compute_distance, args=[haversine], axis=1)
-        return df['haversine']
+        return df
 
 
 class RemoveBadData(TransformerMixin):
