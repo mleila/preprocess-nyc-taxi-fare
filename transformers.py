@@ -74,6 +74,27 @@ class AddDateTime(TransformerMixin):
         return df
 
 
+class DFStandardScaler(TransformerMixin):
+    # StandardScaler but for pandas DataFrames
+
+    def __init__(self):
+        self.ss = None
+        self.mean_ = None
+        self.scale_ = None
+
+    def fit(self, X, y=None):
+        self.ss = StandardScaler()
+        self.ss.fit(X)
+        self.mean_ = pd.Series(self.ss.mean_, index=X.columns)
+        self.scale_ = pd.Series(self.ss.scale_, index=X.columns)
+        return self
+
+    def transform(self, X):
+        # assumes X is a DataFrame
+        Xss = self.ss.transform(X)
+        Xscaled = pd.DataFrame(Xss, index=X.index, columns=X.columns)
+
+
 class ColumnExtractor(TransformerMixin):
 
     def __init__(self, cols):
@@ -107,6 +128,6 @@ def build_preprocessing_pipeline():
             ('filter', RemoveBadData()),
             ('haversin', Haversiner()),
             ('datetime', AddDateTime()),
-            ('StandardScler', StandardScaler())
+            ('StandardScaler', DFStandardScaler())
       ])
     return pipeline
