@@ -1,5 +1,6 @@
 import pandas as pd
 from sklearn.base import TransformerMixin
+from sklearn.preprocessing import StandardScaler
 from sklearn.pipeline import Pipeline, FeatureUnion
 from sklearn.preprocessing import FunctionTransformer
 
