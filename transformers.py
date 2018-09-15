@@ -41,6 +41,18 @@ class RemoveBadData(TransformerMixin):
         return filter_df(df)
 
 
+class AbsDiff(TransformerMixin):
+
+    def fit(self):
+        return self
+
+    def transform(self, df):
+        df['abs_diff_lat'] = abs(df['pickup_latitude'] - df['dropoff_latitude'])
+        df['abs_diff_lon'] = abs(df['pickup_longitude'] - df['dropoff_longitude'])
+        df['Manhatten'] = df['abs_diff_lat'] + df['abs_diff_lon']
+        return df
+
+
 class AddDateTime(TransformerMixin):
 
     def fit(self):
