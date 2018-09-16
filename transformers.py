@@ -4,7 +4,7 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.pipeline import Pipeline, FeatureUnion
 from sklearn.preprocessing import FunctionTransformer
 
-from .distance_functions import haversine, compute_distance, np_haversine
+from .distance_functions import np_haversine
 
 
 nyc_bb = [-74.2589, 40.4774, -73.7004, 40.9176]
