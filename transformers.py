@@ -61,9 +61,7 @@ class AddDateTime(TransformerMixin):
 
     def transform(self, df):
         df['year'] = df.pickup_datetime.dt.year
-        df['month'] = df.pickup_datetime.dt.month
         df['week_day'] = df.pickup_datetime.dt.weekday
-        df['month_day'] = df.pickup_datetime.dt.day
         df['hour'] = df.pickup_datetime.dt.hour
         df = pd.concat([df, pd.get_dummies(df['hour'], prefix='hr')], axis=1)
         df = pd.concat([df, pd.get_dummies(df['week_day'], prefix='dow')], axis=1)
