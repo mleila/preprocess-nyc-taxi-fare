@@ -125,10 +125,19 @@ class DFFeatureUnion(TransformerMixin):
         return pd.concat(dfs, axis=1)
 
 
-def build_preprocessing_pipeline():
+def build_training_preprocess():
     pipeline =  Pipeline([
             ('abs_diff', AbsDiff()),
             ('filter', RemoveBadData()),
+            ('haversin', Haversiner()),
+            ('datetime', AddDateTime()),
+            ('StandardScaler', DFStandardScaler())
+      ])
+    return pipeline
+
+def build_prediction_pipeline():
+    pipeline =  Pipeline([
+            ('abs_diff', AbsDiff()),
             ('haversin', Haversiner()),
             ('datetime', AddDateTime()),
             ('StandardScaler', DFStandardScaler())
