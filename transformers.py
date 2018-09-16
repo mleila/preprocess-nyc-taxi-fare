@@ -4,7 +4,7 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.pipeline import Pipeline, FeatureUnion
 from sklearn.preprocessing import FunctionTransformer
 
-from .distance_functions import haversine, compute_distance
+from .distance_functions import haversine, compute_distance, np_haversine
 
 
 nyc_bb = [-74.2589, 40.4774, -73.7004, 40.9176]
@@ -29,7 +29,8 @@ class Haversiner(TransformerMixin):
         return self
 
     def transform(self, df):
-        df['haversine'] = df.apply(compute_distance, args=[haversine], axis=1)
+        #df['haversine'] = df.apply(compute_distance, args=[haversine], axis=1)
+        df['haversine'] = np_haversine(df['pickup_longitude'].values, df['pickup_latitude'].values, df['dropoff_longitude'].values, df['dropoff_latitude'].values)
         return df
 
 
