@@ -64,7 +64,7 @@ class AddDateTime(TransformerMixin):
         df['hour'] = df.pickup_datetime.dt.hour
         df['dayXhour'] = df['week_day'].astype(str) + '_' + df['hour'].astype(str)
         df = pd.concat([df, pd.get_dummies(df['dayXhour'], prefix='dayxhr')], axis=1)
-        drop_cols = ['pickup_datetime', 'hour', 'week_day', 'pickup_longitude', 'pickup_latitude', 'dropoff_longitude', 'dropoff_latitude']
+        drop_cols = ['dayXhour', 'pickup_datetime', 'hour', 'week_day', 'pickup_longitude', 'pickup_latitude', 'dropoff_longitude', 'dropoff_latitude']
         df.drop(drop_cols, axis=1, inplace=True)
         return df
 
